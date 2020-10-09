@@ -85,9 +85,12 @@ let
 
   emacsGit = mkGitEmacs "emacs-git" ./repos/emacs/emacs-master.json;
 
-  emacsGcc = (mkGitEmacs "emacs-gcc" ./repos/emacs/emacs-feature_native-comp.json).override {
-    nativeComp = true;
-  };
+  emacsGcc = (mkGitEmacs "emacs-gcc" ./repos/emacs/emacs-feature_native-comp.json).overrideAttrs (
+    old: {
+        nativeComp = true;
+        makeFlags = [ "NATIVE_FULL_AOT=1" ];
+    }
+  );
 
   emacsUnstable = (mkGitEmacs "emacs-unstable" ./repos/emacs/emacs-unstable.json).overrideAttrs (
     old: {
