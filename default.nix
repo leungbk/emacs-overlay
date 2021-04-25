@@ -87,7 +87,7 @@ let
 
   emacsGit = mkGitEmacs "emacs-git" ./repos/emacs/emacs-master.json { };
 
-  emacsGcc = (mkGitEmacs "emacs-gcc" ./repos/emacs/emacs-feature_native-comp.json { nativeComp = true; });
+  emacsGcc = (mkGitEmacs "emacs-gcc" ./repos/emacs/emacs-master.json { nativeComp = true; });
 
   emacsPgtk = mkPgtkEmacs "emacs-pgtk" ./repos/emacs/emacs-feature_pgtk.json { };
 
